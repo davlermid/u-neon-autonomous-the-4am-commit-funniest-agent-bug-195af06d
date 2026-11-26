@@ -7,5 +7,9 @@ import { mkdirSync, writeFileSync } from "node:fs";
 const entry =
   "fix: removed my 3am code that fixed my 2am code that fixed the code";
 
+if (entry.length > 200) {
+  throw new Error(`entry too long: ${entry.length} chars (max 200)`);
+}
+
 mkdirSync("/output", { recursive: true });
 writeFileSync("/output/entry.txt", entry, "utf8");
